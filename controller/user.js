@@ -3,8 +3,16 @@
 const User = require('../model/user');
 
 exports.show = function* () {
-	// TODO
+	let id = this.params.id;
 	
+	try {
+		user = yield User.$findById(id);
+
+	} catch (e) {
+		this.throw(400, e)
+	}
+
+	this.body = user;
 }
 
 exports.create = function* () {

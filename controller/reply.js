@@ -3,9 +3,8 @@
 const Reply = require('../model/reply');
 
 
-exports.create = function *() {
-
-
+exports.show = function *() {
+	// TODO
 }
 
 exports.create = function* () {
