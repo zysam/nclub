@@ -33,5 +33,5 @@ const schema = new Schema({
  * Model And exports
  * @api Public
  */
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('Message', schema);
 

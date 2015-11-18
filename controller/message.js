@@ -1,6 +1,6 @@
 'use strict';
 
-const Message = require('./model/message');
+const Message = require('../model/message');
 
 exports.show = function* () {
 	// TODO

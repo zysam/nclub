@@ -4,6 +4,7 @@ const User = require('../model/user');
 
 exports.show = function* () {
 	let id = this.params.id;
+	let user;
 	
 	try {
 		user = yield User.$findById(id);

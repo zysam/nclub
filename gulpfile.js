@@ -23,7 +23,7 @@ gulp.task('dev', () => {
 	nodemon({
 		script: 'app.js',
 		ext: 'js',
-		ingore: 'node_modules'
+		ignore: 'node_modules',
 		delayTime: 1,
 		watch: ['app.js']
 	})

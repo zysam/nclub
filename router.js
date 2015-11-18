@@ -13,7 +13,7 @@ const router = new Router();
 // User 用户路由
 
 // user controller
-// router.get('/user/:name', user.show); // 用户个人主页
+router.get('/user/:name', user.show); // 用户个人主页
 
 
 module.exports = (app) => app.use(router.routes())
