@@ -9,7 +9,7 @@ const app = koa();
 
 //app.use(logger());
 
-//router(app);
+router(app);
 
 app.listen(config.port);
 
