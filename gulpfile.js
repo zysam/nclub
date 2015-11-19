@@ -1,6 +1,3 @@
-/**
- *  工程化
- */
 'use strict';
 
 const gulp = require('gulp');
@@ -10,7 +7,7 @@ const nodemon = require('gulp-nodemon');
 gulp.task('test', function () {
 	gulp.src('test/**/*.test.js', {read: false})
 		.pipe(mocha({
-			timeout: 5000,
+			timeout: 2000,
 			reporter: 'spec',
 			require: ['should']
 		}))
@@ -19,12 +16,15 @@ gulp.task('test', function () {
 		});
 });
 
-gulp.task('dev', () => {
+gulp.task('server:dev', () => {
 	nodemon({
 		script: 'app.js',
+		verbose: true,
 		ext: 'js',
-		ignore: 'node_modules',
+		ignore: ['node_modules/', 'test/'],
 		delayTime: 1,
-		watch: ['app.js']
+		watch: ['./']
 	})
 });
+
+gulp.task('default',['server:dev']);

@@ -3,14 +3,13 @@
 const User = require('../model/user');
 
 exports.show = function* () {
-	let id = this.params.id;
+	let name = this.params.name;
 	let user;
 	
 	try {
-		user = yield User.$findById(id);
-
-	} catch (e) {
-		this.throw(400, e)
+		user = yield User.findByName(name);
+	} catch (err) {
+		this.throw(400, err)
 	}
 
 	this.body = user;

@@ -4,25 +4,31 @@ const User = require('../model/user');
 
 /**
  * 用户注册
- * example 
+ * example: 
  * 	_user = {
  *  	loginname,
  *  	email,
- *  	password,
- *  	
+ *  	pass,
+ *  	re_pass,
  * 	}
  * 	
  * @method *signup
  */
 exports.signup = function* () {
-	let _user = this.reqeuest.body;
-
-	let user = new User(_user);
-
-	yield user.save;
+	let profile = this.request.body;
+	let _user;
+	if (!profile) return this.throw(400, new Error('profile invail'))
+	
+	let	user = new User(profile);
+	try {
+		_user = yield user.save;
+	} catch (err) {
+		this.app.emit('error', err, this);
+		this.throw(400, 'profile invail');
+	}
 
 	this.status = 201;
-	this.body = user
+	this.body = _user;
 }
 
 exports.signin = function* () {

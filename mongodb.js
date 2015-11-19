@@ -10,4 +10,5 @@ mongoose.connect(config.db, {
     console.error('connect to %s error: ', config.db, err.message);
     process.exit(1);
   }
+  console.info('***mongodb has connected URI: %s ***', config.db);
 });
