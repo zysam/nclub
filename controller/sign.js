@@ -1,6 +1,6 @@
 'use strict';
 
-const User = require('../model/user');
+const user = require('./user');
 
 /**
  * 用户注册
@@ -14,22 +14,7 @@ const User = require('../model/user');
  * 	
  * @method *signup
  */
-exports.signup = function* () {
-	let profile = this.request.body;
-	let _user;
-	if (!profile) return this.throw(400, new Error('profile invail'))
-	
-	let	user = new User(profile);
-	try {
-		_user = yield user.save;
-	} catch (err) {
-		this.app.emit('error', err, this);
-		this.throw(400, 'profile invail');
-	}
-
-	this.status = 201;
-	this.body = _user;
-}
+exports.signup = user.create
 
 exports.signin = function* () {
 	
