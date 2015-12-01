@@ -11,7 +11,7 @@ const app = koa();
 app.use(logger());
 app.use(bodyParser());
 
-router(app);
+app.use(router.routes());
 
 if (!module.parent) {
 	app.listen(config.port);
